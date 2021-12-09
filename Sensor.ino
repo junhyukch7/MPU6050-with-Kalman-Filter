@@ -8,10 +8,10 @@ mpu6050::MsgMpu6050 msg;
 ros::Publisher sensor("sensor", &msg);
 
 const int MPU_addr = 0x68; 
-int16_t AcX,AcY,AcZ,Tmp,GyX,GyY,GyZ;// 가속도센서 = 가속도, 자이로센서 = 각속도
+int16_t AcX,AcY,AcZ,Tmp,GyX,GyY,GyZ;
 
-double angleAcX,angleAcY,angleAcZ;
-double angleGyX,angleGyY,angleGyZ;
+double accAcX,accAcY,accAcZ;
+double rateGyX,rateGyY,rateGyZ;
 
 void initSensor(){
   Wire.begin();
@@ -46,20 +46,20 @@ void getRawData(){
 }
 
 
-// 가속도 센서를 이용하여 가속도 구하기
+// caculate
 void AccXY(){
   // g = 16384;
   getRawData();
-  angleAcX = AcX/16384.0;
-  angleAcY = AcY/16384.0;
-  angleAcZ = AcZ/16384.0;
+  accAcX = AcX/16384.0;
+  accAcY = AcY/16384.0;
+  accAcZ = AcZ/16384.0;
 }
-// 자이로 센서를 이용하여 각속도 구하기(p,q,r)
+// caculate rate 
 void GyroXYZ(){
   getRawData();
-  angleGyX = GyX/131; // 131deg roatae per second
-  angleGyY = GyY/131;
-  angleGyZ = GyZ/131;
+  rateGyX = GyX/131.0; // 131deg roatae per second
+  rateGyY = GyY/131.0;
+  rateGyZ = GyZ/131.0;
 }
 
 
@@ -68,13 +68,13 @@ void loop()
   AccXY();
   GyroXYZ();
  
-  msg.AcX = angleAcX;
-  msg.AcY = angleAcY;
-  msg.AcZ = angleAcZ;
+  msg.AcX = accAcX;
+  msg.AcY = accAcY;
+  msg.AcZ = accAcZ;
 
-  msg.GyX = angleGyX;
-  msg.GyY = angleGyY;
-  msg.GyZ = angleGyZ;
+  msg.GyX = rateGyX;
+  msg.GyY = rateGyY;
+  msg.GyZ = rateGyZ;
   
   sensor.publish( &msg );
   nh.spinOnce();
