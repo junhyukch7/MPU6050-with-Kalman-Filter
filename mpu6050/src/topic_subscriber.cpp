@@ -1,4 +1,3 @@
-// pitch value seem like correct but roll is totally weird
 #include "ros/ros.h"
 #include "mpu6050/MsgMpu6050.h"
 #include "mpu6050/MsgPose.h"
@@ -32,8 +31,8 @@ public:
      
      I = Matrix4d::Identity();
      H = I;
-     Q = 1.0*I;//9.333 if Q is rising then pitch get close to 0 but roll is go to negative 
-     R = 0.001*I; // 0.007
+     Q = 1.0*I;
+     R = 0.001*I;
      x(0,0) = 1.0; x(1,0) = 0.0; x(2,0) = 0.0; x(3,0) = 0.0;
      P = I; 
    }
@@ -86,7 +85,7 @@ public:
    
    void msgCallback(const mpu6050::MsgMpu6050::ConstPtr& msg)
    {
-     //각 함수 여기 차례대로 실행
+     //main loop
      ros::Rate loop_rate(33);
      
      AcX = msg->AcX;
