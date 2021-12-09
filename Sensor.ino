@@ -30,7 +30,6 @@ void setup()
   Serial.begin(115200); //57600
 }
 
-
 void getRawData(){
   Wire.beginTransmission(MPU_addr);
   Wire.write(0x3B);  // starting with register 0x3B (ACCEL_XOUT_H)
@@ -44,9 +43,6 @@ void getRawData(){
   GyY=Wire.read()<<8|Wire.read();  // 0x45 (GYRO_YOUT_H) & 0x46 (GYRO_YOUT_L)
   GyZ=Wire.read()<<8|Wire.read();  // 0x47 (GYRO_ZOUT_H) & 0x48 (GYRO_ZOUT_L)
 }
-
-
-// caculate
 void AccXY(){
   // g = 16384;
   getRawData();
@@ -54,7 +50,6 @@ void AccXY(){
   accAcY = AcY/16384.0;
   accAcZ = AcZ/16384.0;
 }
-// caculate rate 
 void GyroXYZ(){
   getRawData();
   rateGyX = GyX/131.0; // 131deg roatae per second
