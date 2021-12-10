@@ -117,7 +117,7 @@ void EulerAccel(){
 <p align="center"><img src = "https://github.com/junhyukch7/MPU6050-with-Kalman-Filter/blob/main/pitch.png" width = "80%">
 <p align="center">(Figure.2) Pitch with Kalman Filter
   
-For testing the algorithm accurancy, I was rotateing mpu6050 about -90 to 90 degree to X-Y axis.(mpu 6050 can estimate -90 to 90). As you can see at the Figure, algorithm estimation values show high accurancy. In case of Roll, It showed high accuracy both in the horizontal and in the rotating situation. 
+For testing the algorithm accurancy, I was rotateing mpu6050 about -90 to 90 degree for each axis(X-Y).(mpu 6050 can estimate -90 to 90). As you can see at the Figure, algorithm estimation values show high accurancy. In case of Roll, It showed high accuracy both in the horizontal and in the rotating situation. 
 But in case of Pitch, there is a little bit error when it was horizontal(3.xx degree). Because When I tested IMU data, the x-axis gyro showed an error of -9 degrees even in the horizontal state. For this reason, It shows a little error in horizontal.
   
 
