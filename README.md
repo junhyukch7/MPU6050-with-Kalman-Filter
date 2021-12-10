@@ -13,7 +13,7 @@ The Arduino Uno is sending(publish) Acceleration and angular velocity for each X
 ## Prerequisite package & Library
 
 1. Eigen Library(C++)
-2. Ros
+2. ROS
 3. rosserial
 ---
 ## Deployment
