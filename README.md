@@ -32,7 +32,7 @@ rosrun rosserial_python serial_node.py _port:=/dev/ttyACM0 _baud:=115200
 rosrun mpu6050 topic_subscriber
 ```
 ---
-## Algorithm PipleLine(Kalman Filter)
+## Algorithm PipeLine(Kalman Filter)
 
 1. Setting initial value for caculating 
 
