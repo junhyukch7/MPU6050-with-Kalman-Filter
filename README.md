@@ -34,7 +34,7 @@ rosrun mpu6050 topic_subscriber
 ---
 ## Algorithm PipleLine(Kalman Filter)
 
-1. setting initial value for caculating 
+1. Setting initial value for caculating 
 
 ```c++
 Kalman(){
@@ -49,7 +49,7 @@ Kalman(){
      P = I; // error covariance
    }
 ```
-2. init system matrix
+2. Init system matrix
 
 ```c++
 void initSystemMatrix(){
@@ -112,10 +112,10 @@ void EulerAccel(){
 ## Result
 
 <p align="center"><img src = "https://github.com/junhyukch7/MPU6050-with-Kalman-Filter/blob/main/roll.png" width = "80%">
-<p align="center">(Figure.1)Roll with Kalman Filter
+<p align="center">(Figure.1) Roll with Kalman Filter
   
 <p align="center"><img src = "https://github.com/junhyukch7/MPU6050-with-Kalman-Filter/blob/main/pitch.png" width = "80%">
-<p align="center">(Figure.2)Pitch with Kalman Filter
+<p align="center">(Figure.2) Pitch with Kalman Filter
   
 For testing the algorithm accurancy, I was rotateing mpu6050 about -90 to 90 degree to X-Y axis.(mpu 6050 can estimate -90 to 90). As you can see at the Figure, algorithm estimation values show high accurancy. In case of Roll, It showed high accuracy both in the horizontal and in the rotating situation. 
 But in case of Pitch, there is a little bit error when it was horizontal(3.xx degree). Because When I tested IMU data, the x-axis gyro showed an error of -9 degrees even in the horizontal state. For this reason, It shows a little error in horizontal.
